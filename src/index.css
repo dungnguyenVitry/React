@@ -101,3 +101,24 @@ li:active {
   outline: none;
   background: #242424 !important;
 }
+.option-label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(132, 69, 235);
+  border-radius: 2px;
+  margin-right: 8px;
+  margin-top:2px;
+  cursor: pointer;
+}
+
+.option-label input[type="radio"]:checked::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  display: block;
+  background-color: rgb(110, 161, 238);
+  border-radius: 2px;
+}

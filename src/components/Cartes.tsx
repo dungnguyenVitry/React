@@ -1,9 +1,9 @@
-import React , { useState, useRef, useEffect }from "react";
+import React, { useState, useRef, useEffect }from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Carte from "./Carte";
-import Modal from "./Modals"
+import Modal from "./Modals";
 
 interface CartesProps {
   selectedOption: string | null; // Prop - value of option selected
@@ -18,9 +18,8 @@ const Cartes: React.FC<CartesProps> = ({ selectedOption }) => {
     "El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras."
   ];
 
-//   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-const [submittedCount, setSubmittedCount] = useState(0); // count number of carte submitted
-const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [submittedCount, setSubmittedCount] = useState(0); // count number of carte submitted
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false); 
   const sliderRef = useRef<Slider>(null);
 
@@ -32,17 +31,16 @@ const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
       options: shuffleOptions
     };
   });
+
   const handleNextCard = () => {
-    // setCurrentCardIndex((prevIndex) => prevIndex + 1);
     if (sliderRef.current) {
-        sliderRef.current.slickNext(); //auto change slide when submit
-      }
+      sliderRef.current.slickNext(); //auto change slide when submit
+    }
   };
 
-  const handleOptionSelect = (option: string) => {
-    setSelectedOptions(prevOptions => [...prevOptions, option]); 
-  };
-
+//   const handleOptionSelect = (option: string) => {
+//     setSelectedOptions(prevOptions => [...prevOptions, option]); 
+//   };
 
   useEffect(() => {
     if (submittedCount === 3) {
@@ -50,12 +48,14 @@ const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     }
   }, [submittedCount]);
 
-  const handleCardSubmit = () => {
-    setSubmittedCount(prevCount => prevCount + 1); 
-    
+  const handleCardSubmit = (selectedOption: string) => {
+    setSubmittedCount(prevCount => prevCount + 1);
+    setSelectedOptions(prevOptions => [...prevOptions, selectedOption]);
+    console.log(selectedOptions);
   };
   
-
+  
+  
   const settings = {
     dots: true,               
     infinite: true,           
@@ -78,16 +78,16 @@ const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
             <Slider {...settings} className="w-4/5 h-2/3 " ref={sliderRef}>
                 {cartesData.map((carte) => (
                 <div key={carte.id} className="mx-auto">
-                    <Carte data={carte} onNextCard={handleNextCard} onCardSubmit={handleCardSubmit} onOptionSelect={handleOptionSelect} />
+                    <Carte data={carte} onNextCard={handleNextCard} onCardSubmit={handleCardSubmit} />
+
                 </div>
                 ))}
             </Slider>
         </div>
-        {showModal && <Modal selectedOptions={selectedOptions}/>}
+        {showModal && submittedCount > 0 && <Modal selectedOptions={selectedOptions}/>}
 
     </div>
   );
-  
 };
 
 export default Cartes;

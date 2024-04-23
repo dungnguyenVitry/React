@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +17,87 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+li {
+  padding: 15px 5px; 
+}
+
+li:hover {
+  background-color: rgba(240, 244, 255, 1);  
+}
+
+li:active {
+  background-color: rgba(73, 75, 255, 0.15); 
+}
+
+
+li:hover {
+  background-color: rgba(240, 244, 255, 1);  
+
+}
+
+
+li:active {
+  background-color: rgba(73, 75, 255, 0.15); 
+ 
+}
+
+
+.button-select:hover{
+  color: rgb(83, 111, 187);
+
+}
+
+.button-select:active{
+  color: rgba(72, 75, 240, 0.15);
+ 
+}
+.slick-slide {
+  opacity: 0.2; 
+}
+
+.slick-center {
+  opacity: 1; 
+}
+.carte {
+  background-color: #fff; 
+  box-shadow: 0 8px 30px -7px #c9dff0; 
+  margin: 0 20px; 
+  padding: 0 10px; 
+  border-radius: 20px; 
+  border: 0; 
+}
+
+
+.slick-dots {
+  bottom: 20px; 
+}
+
+
+.slick-prev::before,
+.slick-next::before {
+  color: #000!important; 
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #fff; 
+}
+
+
+.carte {
+  background-color: #fff; 
+  box-shadow: 0 8px 30px -7px #c9dff0;
+  margin: 0 20px; 
+  padding: 0 10px; 
+  border-radius: 20px; 
+  border: 0; 
+}
+
+.myCustomCarousel .slick-arrow {
+  color: #070606 !important;
+  border: none;
+  outline: none;
+  background: #242424 !important;
 }

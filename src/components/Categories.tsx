@@ -66,7 +66,7 @@ const Categories: React.FC<CategoriesProps> = ({ onNextStep }) => {
           <button className="bg-blue-500 text-white px-4 py-2 mt-4 rounded" onClick={handleNextStep}>
             Suivant
           </button>
-            <img src={image2} className="absolute w-[393.4px] h-[456.8px] -right-[55.1px] bottom-[3.11px] transform rotate-[-7.8]" />
+          <img src={image2} className="absolute w-[393.4px] h-[456.8px] -right-[55.1px] bottom-[3.11px] transform rotate-[-7.8]" />
         </>
       )}
       {showCartes && <Cartes selectedOption={selectedOption} />}

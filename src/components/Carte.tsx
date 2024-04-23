@@ -13,9 +13,11 @@ interface CarteProps {
 const Carte: React.FC<CarteProps> = ({ data, onNextCard, onCardSubmit }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
+    setShowErrorMessage(false);
   };
 
   const handleSubmit = () => {
@@ -26,6 +28,9 @@ const Carte: React.FC<CarteProps> = ({ data, onNextCard, onCardSubmit }) => {
       setTimeout(() => {
         onNextCard();
       }, 1000);
+    }
+    else{
+      setShowErrorMessage(true);
     }
   };
 
@@ -46,6 +51,9 @@ const Carte: React.FC<CarteProps> = ({ data, onNextCard, onCardSubmit }) => {
           </li>
         ))}
       </ul>
+      {showErrorMessage && ( 
+        <p style={{ color: "red" }}>Veuillez choisir une option</p>
+      )}
       <button className="bg-blue-500 text-white px-4 py-2 mt-4 rounded mx-auto block" onClick={handleSubmit}>Submit</button>
 
       {submitted && (
